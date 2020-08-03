@@ -8,10 +8,10 @@ const navigator = createStackNavigator(
     Sign: SignScreen
   },
   {
-    initialRouteName: 'Sign in',
+    initialRouteName: 'Sign',
     defaultNavigationOptions: {
       title: 'Sign in'
-    }
+    },
   });
 
 // const App = createAppContainer(navigator);
