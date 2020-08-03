@@ -10,7 +10,7 @@ const SignForm = () => {
         <View>
             <Input label='Email' value={email} onChangeText={setEmail} autoCapitalize='none' autoCorrect={false} />
             <Input secureTextEntry label='Password' value={password} onChangeText={setPassword} autoCapitalize='none' autoCorrect={false} />
-            <Button title='Sign in' onPress={() => console.log('Sign in button pressed')} />
+            <Button title='Sign in' onPress={() => console.log('Sign in button has pressed')} />
         </View>
     );
 };
