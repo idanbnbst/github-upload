@@ -8,7 +8,7 @@ const navigator = createStackNavigator(
     Sign: SignScreen
   },
   {
-    initialRouteName: 'Sign',
+    initialRouteName: 'Sign in',
     defaultNavigationOptions: {
       title: 'Sign in'
     }
