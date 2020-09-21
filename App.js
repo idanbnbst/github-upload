@@ -1,20 +1,23 @@
-import React from 'react';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import SignScreen from './src/screens/SignScreen';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-const navigator = createStackNavigator(
-  {
-    Sign: SignScreen
-  },
-  {
-    initialRouteName: 'Sign',
-    defaultNavigationOptions: {
-      title: 'Sign in'
-    },
-  });
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import SignInScreen from './src/screens/SignInScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
+import DashboardScreen from './src/screens/DashboardScreen';
 
-// const App = createAppContainer(navigator);
-// export default () => <App />
 
-export default createAppContainer(navigator);
+
+import * as firebase from 'firebase';
+import { firebaseConfig } from './src/config';
+
+firebase.initializeApp(firebaseConfig);
+
+const switchNavigator = createSwitchNavigator({
+  ResolveAuth: ResolveAuthScreen,
+  Signup: SignUpScreen,
+  Signin: SignInScreen
+});
+
+export default createAppContainer(switchNavigator);
