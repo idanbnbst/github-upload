@@ -1,5 +1,5 @@
 import createDataContext from './createDataContext';
-import { navigate } from '../_navigationRef';
+import { navigate } from '../navigationRef';
 
 import * as Google from 'expo-google-app-auth';
 import * as firebase from 'firebase';
@@ -9,14 +9,15 @@ const authReducer = (state, action) => {
         case 'sign_in':
             return { token: action.payload };
         case 'test':
-            return state;
+            return { errorMessage: action.payload };
         default:
             return state;
     }
 };
 
-const tryLocalSignIn = dispatch => () => {
-    dispatch({ type: 'test' });
+const tryLocalSignIn = (dispatch) => () => {
+    dispatch({ type: 'test', payload: 'test' })
+    //navigate('Signup');
 }
 
 const signUp = dispatch => async ({ email, password }) => {
@@ -87,8 +88,8 @@ const clearErrorMessages = dispatch => () => {
     dispatch({ type: 'clear_error', payload: '' });
 }
 
-export const { Provider, Context } =
-    createDataContext(authReducer,
-        { signUp, signIn, signOut, signInWithGoogle, clearErrorMessages, tryLocalSignIn },
-        { token: null, errorMessage: '', isNewUser: false }
-    );
+export const { Provider, Context } = createDataContext(
+    authReducer,
+    { signUp, signIn, signOut, signInWithGoogle, clearErrorMessages, tryLocalSignIn },
+    { token: null, errorMessage: '', isNewUser: false }
+);

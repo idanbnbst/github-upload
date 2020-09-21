@@ -1,12 +1,11 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { Context as AuthContext } from '../context/AuthContext';
 
 const ResolveAuthScreen = () => {
     const { tryLocalSignIn } = useContext(AuthContext);
 
-    useEffect(
-        () => {
+    useEffect(() => {
             tryLocalSignIn();
         }, []);
 
@@ -20,8 +19,8 @@ const ResolveAuthScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: 100
     }
 });
 
